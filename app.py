@@ -17,87 +17,116 @@ EXCEL_PATH = BASE_DIR / "allcall_bi_data.xlsx"
 
 NAVY = "#02013B"
 NAVY_2 = "#060658"
+BLUE = "#0D1691"
 ACCENT = "#0ACAF9"
+WHITE = "#FFFFFF"
+SOFT_WHITE = "#EAF2FF"
 
 
 def inject_css():
     st.markdown(
         f"""
         <style>
+        /* Main app background */
         .stApp {{
             background: linear-gradient(180deg, {NAVY} 0%, {NAVY_2} 100%);
-            color: white;
+            color: {WHITE};
         }}
 
+        /* Top white header area */
+        header[data-testid="stHeader"] {{
+            background: transparent !important;
+            height: 0rem !important;
+        }}
+
+        [data-testid="stDecoration"] {{
+            display: none !important;
+        }}
+
+        div[data-testid="stToolbar"] {{
+            top: 0.5rem !important;
+            right: 1rem !important;
+        }}
+
+        /* Layout */
         .block-container {{
             padding-top: 1.2rem;
             padding-bottom: 2rem;
         }}
 
+        /* Titles */
         .main-title {{
-            font-size: 28px;
-            font-weight: 700;
-            color: #FFFFFF;
-            margin-bottom: 0.3rem;
+            font-size: 32px;
+            font-weight: 800;
+            color: {WHITE};
+            margin-bottom: 0.25rem;
         }}
 
         .sub-title {{
-            font-size: 14px;
-            color: #DCE6FF;
-            margin-bottom: 1rem;
-        }}
-
-        .card {{
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.14);
-            border-radius: 16px;
-            padding: 16px 18px;
-            margin-bottom: 14px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.18);
-        }}
-
-        .card-title {{
-            font-size: 13px;
-            color: #DCE6FF;
-            margin-bottom: 8px;
-        }}
-
-        .card-value {{
-            font-size: 28px;
-            font-weight: 700;
-            color: #FFFFFF;
-            line-height: 1.2;
+            font-size: 15px;
+            color: {SOFT_WHITE};
+            margin-bottom: 1.1rem;
         }}
 
         .section-title {{
             font-size: 18px;
             font-weight: 700;
-            color: #FFFFFF;
+            color: {WHITE};
             margin: 8px 0 12px 0;
         }}
 
-        /* Metric card */
+        /* Custom cards */
+        .card {{
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 16px;
+            padding: 16px 18px;
+            margin-bottom: 14px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+        }}
+
+        .card-title {{
+            font-size: 13px;
+            color: {SOFT_WHITE} !important;
+            font-weight: 600 !important;
+            margin-bottom: 8px;
+        }}
+
+        .card-value {{
+            font-size: 28px;
+            font-weight: 800;
+            color: {WHITE} !important;
+            line-height: 1.2;
+        }}
+
+        /* Metric cards */
         div[data-testid="stMetric"] {{
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.14);
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.18);
             padding: 12px 16px;
             border-radius: 14px;
         }}
 
         div[data-testid="stMetricLabel"] {{
-            color: #DCE6FF !important;
+            color: {SOFT_WHITE} !important;
+            opacity: 1 !important;
         }}
 
         div[data-testid="stMetricLabel"] * {{
-            color: #DCE6FF !important;
+            color: {SOFT_WHITE} !important;
+            opacity: 1 !important;
+            font-weight: 600 !important;
         }}
 
         div[data-testid="stMetricValue"] {{
-            color: #FFFFFF !important;
+            color: {WHITE} !important;
+            opacity: 1 !important;
         }}
 
         div[data-testid="stMetricValue"] * {{
-            color: #FFFFFF !important;
+            color: {WHITE} !important;
+            opacity: 1 !important;
+            font-weight: 800 !important;
         }}
 
         /* Tabs */
@@ -108,12 +137,12 @@ def inject_css():
         .stTabs [data-baseweb="tab"] {{
             background: rgba(255,255,255,0.08);
             border-radius: 10px;
-            color: #FFFFFF !important;
+            color: {WHITE} !important;
             padding: 8px 14px;
         }}
 
         .stTabs [data-baseweb="tab"] * {{
-            color: #FFFFFF !important;
+            color: {WHITE} !important;
         }}
 
         .stTabs [aria-selected="true"] {{
@@ -126,50 +155,48 @@ def inject_css():
             color: #001b2a !important;
         }}
 
-        /* Input label */
+        /* Inputs */
         .stSelectbox label,
         .stTextInput label,
         .stDateInput label,
         .stRadio label,
         .stMultiSelect label {{
-            color: #FFFFFF !important;
+            color: {WHITE} !important;
+            font-weight: 600 !important;
         }}
 
         /* Sidebar */
         section[data-testid="stSidebar"] {{
             background: rgba(255,255,255,0.04) !important;
+            border-right: 1px solid rgba(255,255,255,0.06);
         }}
 
         section[data-testid="stSidebar"] * {{
-            color: #FFFFFF !important;
+            color: {WHITE} !important;
         }}
 
         section[data-testid="stSidebar"] .stRadio label {{
-            color: #FFFFFF !important;
-        }}
-
-        section[data-testid="stSidebar"] .stRadio div[role="radiogroup"] label {{
-            color: #FFFFFF !important;
+            color: {WHITE} !important;
         }}
 
         section[data-testid="stSidebar"] .stRadio div[role="radiogroup"] label p {{
-            color: #FFFFFF !important;
+            color: {WHITE} !important;
             opacity: 1 !important;
         }}
 
-        section[data-testid="stSidebar"] p,
-        section[data-testid="stSidebar"] span,
-        section[data-testid="stSidebar"] div {{
-            color: #FFFFFF;
-        }}
-
-        /* General markdown/text */
+        /* Markdown and headers */
         .stMarkdown, .stMarkdown p, .stText {{
-            color: #FFFFFF !important;
+            color: {WHITE} !important;
         }}
 
         h1, h2, h3, h4, h5, h6 {{
-            color: #FFFFFF !important;
+            color: {WHITE} !important;
+        }}
+
+        /* Tables / dataframes container feel */
+        div[data-testid="stDataFrame"] {{
+            border-radius: 12px;
+            overflow: hidden;
         }}
         </style>
         """,
@@ -180,16 +207,14 @@ def inject_css():
 def main():
     inject_css()
 
-    st.markdown('<div class="main-title">AllCall BI Dashboard</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="main-title">AllCall BI Dashboard</div>',
+        unsafe_allow_html=True
+    )
     st.markdown(
         '<div class="sub-title">Excel-д суурилсан Ticket, Sales, Social media, Operation dashboard</div>',
         unsafe_allow_html=True
     )
-
-    # debug
-    st.write("BASE_DIR:", str(BASE_DIR))
-    st.write("EXCEL_PATH:", str(EXCEL_PATH))
-    st.write("Excel exists:", EXCEL_PATH.exists())
 
     if not EXCEL_PATH.exists():
         st.error(f"Excel файл олдсонгүй: {EXCEL_PATH}")
