@@ -28,57 +28,148 @@ def inject_css():
             background: linear-gradient(180deg, {NAVY} 0%, {NAVY_2} 100%);
             color: white;
         }}
+
         .block-container {{
             padding-top: 1.2rem;
             padding-bottom: 2rem;
         }}
+
         .main-title {{
             font-size: 28px;
             font-weight: 700;
-            color: white;
+            color: #FFFFFF;
             margin-bottom: 0.3rem;
         }}
+
         .sub-title {{
             font-size: 14px;
-            color: #d6dcf5;
+            color: #DCE6FF;
             margin-bottom: 1rem;
         }}
+
+        .card {{
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 16px;
+            padding: 16px 18px;
+            margin-bottom: 14px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+        }}
+
+        .card-title {{
+            font-size: 13px;
+            color: #DCE6FF;
+            margin-bottom: 8px;
+        }}
+
+        .card-value {{
+            font-size: 28px;
+            font-weight: 700;
+            color: #FFFFFF;
+            line-height: 1.2;
+        }}
+
+        .section-title {{
+            font-size: 18px;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin: 8px 0 12px 0;
+        }}
+
+        /* Metric card */
         div[data-testid="stMetric"] {{
             background: rgba(255,255,255,0.08);
             border: 1px solid rgba(255,255,255,0.14);
             padding: 12px 16px;
             border-radius: 14px;
         }}
+
         div[data-testid="stMetricLabel"] {{
-            color: #d4dcf7;
+            color: #DCE6FF !important;
         }}
+
+        div[data-testid="stMetricLabel"] * {{
+            color: #DCE6FF !important;
+        }}
+
         div[data-testid="stMetricValue"] {{
-            color: white;
+            color: #FFFFFF !important;
         }}
+
+        div[data-testid="stMetricValue"] * {{
+            color: #FFFFFF !important;
+        }}
+
+        /* Tabs */
         .stTabs [data-baseweb="tab-list"] {{
             gap: 8px;
         }}
+
         .stTabs [data-baseweb="tab"] {{
             background: rgba(255,255,255,0.08);
             border-radius: 10px;
-            color: white;
+            color: #FFFFFF !important;
             padding: 8px 14px;
         }}
+
+        .stTabs [data-baseweb="tab"] * {{
+            color: #FFFFFF !important;
+        }}
+
         .stTabs [aria-selected="true"] {{
             background: {ACCENT} !important;
             color: #001b2a !important;
             font-weight: 700;
         }}
-        .stSelectbox label, .stTextInput label, .stDateInput label {{
-            color: white !important;
+
+        .stTabs [aria-selected="true"] * {{
+            color: #001b2a !important;
         }}
-        .stSidebar {{
-            background: rgba(255,255,255,0.04);
+
+        /* Input label */
+        .stSelectbox label,
+        .stTextInput label,
+        .stDateInput label,
+        .stRadio label,
+        .stMultiSelect label {{
+            color: #FFFFFF !important;
         }}
-        .stSidebar .stRadio label,
-        .stSidebar .stMarkdown,
-        .stSidebar .stText {{
-            color: white !important;
+
+        /* Sidebar */
+        section[data-testid="stSidebar"] {{
+            background: rgba(255,255,255,0.04) !important;
+        }}
+
+        section[data-testid="stSidebar"] * {{
+            color: #FFFFFF !important;
+        }}
+
+        section[data-testid="stSidebar"] .stRadio label {{
+            color: #FFFFFF !important;
+        }}
+
+        section[data-testid="stSidebar"] .stRadio div[role="radiogroup"] label {{
+            color: #FFFFFF !important;
+        }}
+
+        section[data-testid="stSidebar"] .stRadio div[role="radiogroup"] label p {{
+            color: #FFFFFF !important;
+            opacity: 1 !important;
+        }}
+
+        section[data-testid="stSidebar"] p,
+        section[data-testid="stSidebar"] span,
+        section[data-testid="stSidebar"] div {{
+            color: #FFFFFF;
+        }}
+
+        /* General markdown/text */
+        .stMarkdown, .stMarkdown p, .stText {{
+            color: #FFFFFF !important;
+        }}
+
+        h1, h2, h3, h4, h5, h6 {{
+            color: #FFFFFF !important;
         }}
         </style>
         """,
